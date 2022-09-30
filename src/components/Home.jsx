@@ -196,7 +196,7 @@ const Home = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg>
-                        <span class="ml-3 text-xl">Tailblocks</span>
+                        <span class="ml-3 text-xl">Admin&Local User</span>
                     </a>
 
 
@@ -204,14 +204,17 @@ const Home = () => {
 
 
 
-                    <div className="md:ml-a uto">
+                    <div className="md:ml-auto">
 
                         <button class="mx-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                            Login
+                            
+                            <Link to='/login'>Login</Link>
                         </button>
 
                         <button class="mx-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                            Register
+                            
+
+                            <Link to='/register'>Register</Link>
                         </button>
 
                     </div>

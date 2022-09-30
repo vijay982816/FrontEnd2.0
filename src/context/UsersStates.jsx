@@ -2,9 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import UserContext from './UserContext.jsx'
 import axios from 'axios';
+import { data } from 'autoprefixer';
 const UsersStates = (props) => {
 
-    const [localenv, setlocalEnv] = useState({ HOST: 'https://curd-with-image.onrender.com' })
+    const [localenv, setlocalEnv] = useState({ HOST: 'https://3010-vijay982816-backendcurd-6k5lcxb1x4m.ws-us69.gitpod.io' })
 
     const [users, setUsers] = useState([])
 
@@ -32,38 +33,74 @@ const UsersStates = (props) => {
         return myjson
     }
 
-    // Add user
-    const addUser = async (name, age, phone, uploadProfileImage) => {
+    // Registering a user 
+    const registerUser = async (user) => {
 
 
-       
-        const formdata = new FormData();
-        formdata.append("name", name)
-        formdata.append("age", age)
-        formdata.append("phone", phone)
-        formdata.append("uploadProfileImage", uploadProfileImage)
+
+        // const formdata = new FormData();
+        // formdata.append("name", name)
+        // formdata.append("email", email)
+        // formdata.append("password", password)
+        // formdata.append("role", role)
 
 
-        const url = `${localenv.HOST}/api/users/adduser`
 
-        const config = {
 
-            headers: {
-                "Content-Type": "multipart/form-data",
+
+        if (user.role == "user") {
+
+
+
+
+            try {
+                const url = `${localenv.HOST}/user/register`
+
+                const config = {
+
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                    }
+
+
+                }
+
+
+
+                const registredUser = await axios.post(url, user, config)
+
+                    // .then((data) => {
+                    //     // const { data, message } = registredUser
+
+                    //     console.log(data)
+                    //     console.log(message)
+
+                    // })
+
+                    .catch(error => console.log(error.message))
+
+
+
+
+
+
+                return registredUser.data.message
+            } catch (error) {
+
+
+
+                console.log(error)
             }
 
 
+
+        }
+        else {
+
+            const url = `${localenv.HOST}/admin/register`
+
         }
 
-
-
-        const addedUser = await axios.post(url, formdata, config)
-            .catch(error => console.log(error.message))
-
-        console.log(addedUser.data.data)
-        setUsers(users.concat(addedUser.data.data))
-
-        return addedUser.data.message
     }
 
 
@@ -141,7 +178,7 @@ const UsersStates = (props) => {
     return (
 
 
-        <UserContext.Provider value={{ users, oneUser, getUsers, addUser, updateUser, deleteUser }}>
+        <UserContext.Provider value={{ users, oneUser, getUsers, registerUser, updateUser, deleteUser }}>
 
 
 

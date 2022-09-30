@@ -6,7 +6,9 @@ import UpdateUser from './components/UpdateUser.jsx';
 import ViewProfile from './components/ViewProfile.jsx';
 import 'react-toastify/dist/ReactToastify.css'
 
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 
 
 
@@ -34,13 +36,15 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/adduser" element={<AddUser />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
 
         <  Route path="/updateuser/:id" element={<UpdateUser />} />
 
         <  Route path="/view/:id" element={<ViewProfile />} />
-      
-      
+
+
 
 
 
